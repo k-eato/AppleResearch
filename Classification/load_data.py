@@ -5,7 +5,7 @@ import tensorflow as tf
 import scipy
 from tensorflow.keras.models import Sequential, Model
 from tensorflow.keras.layers import  Dropout, Input
-from tensorflow.keras.layers import Dense, Flatten, GaussianNoise, AveragePooling2D
+from tensorflow.keras.layers import Dense, Flatten
 from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.metrics import categorical_crossentropy
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
@@ -39,9 +39,9 @@ def run():
 
         imgs, labels = next(train_batches)
         plots(imgs, titles=labels)
-        vgg16_model = tensorflow.keras.applications.resnet50.ResNet50(weights='imagenet', include_top=False, input_tensor=Input(shape=(224,224,3)))
+        vgg16_model = tensorflow.keras.applications.vgg16.vgg16(weights='imagenet', include_top=False, input_tensor=Input(shape=(224,224,3)))
 
-        for layer in vgg16_model.layers[:-13]:
+        for layer in vgg16_model.layers[:-4]:
              layer.trainable = False
         	 
         # Create the model
@@ -51,12 +51,9 @@ def run():
         model.add(vgg16_model)
  
 	# Add new layers
-        #model.add(AveragePooling2D(pool_size=2))
         model.add(Flatten())
+        model.add(Dense(1024, activation='relu'))
         model.add(Dropout(0.5))
-        model.add(Dense(800, activation='relu'))
-        model.add(Dropout(0.5))
-        model.add(GaussianNoise(.1))
         model.add(Dense(2, activation='softmax'))
         
 	 
@@ -67,7 +64,7 @@ def run():
         history = model.fit_generator(
               train_batches,
               steps_per_epoch=train_batches.samples/train_batches.batch_size ,
-              epochs=4,
+              epochs=5,
               validation_data=valid_batches,
               validation_steps=valid_batches.samples/valid_batches.batch_size,
               verbose=1)

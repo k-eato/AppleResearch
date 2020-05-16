@@ -5,7 +5,7 @@ import xml_maker as xml
 
 Im2 = Image.open("belt.jpg")
 
-for m in range(200,202):
+for m in range(0,2000):
     apples = random.randint(1,7)
     output = Im2.copy()
     arr = [[0]*4]*apples
@@ -54,7 +54,7 @@ for m in range(200,202):
 
     print(m)
     xml.makeXML(m,arr)
-    outFile = "Data/" + str(m) + ".jpg"
+    outFile = "Output/" + str(m) + ".jpg"
     output = output.filter(ImageFilter.SMOOTH)
     output = output.filter(ImageFilter.SHARPEN)
     output.save(outFile, quality=95)

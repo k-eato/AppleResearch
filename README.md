@@ -17,3 +17,6 @@ The issue with this approach is the difficulty in creating a large enough datase
 The three datsets used with the classification model are split for the purposes of training, validation, and testing. The training dataset features images of healthy and rotten apples against the background of the belt from the training dataset of the Object Detection portion. Likewise, the testing dataset uses the blue belt background of the object detection test dataset. All of the images used for this come from data of rotten and fresh fruits found on [Kaggle](https://www.kaggle.com/sriramr/fruits-fresh-and-rotten-for-classification). For the validation dataset, the images are used as found in this dataset to hopefully provide better contrast to the train and test datasets in order to fight overfitting. To increase the size of the datasets, two Python scripts (rotate.py and brighten.py) are used to rotate and affect the brightness of all the images passed to them. This effectively creates 11 new images from the original. Sample results of this are shown below.<br/>
 ![Classification Data](https://github.com/k-eato/AppleResearch/blob/master/Classification/Data/augmentation_results.JPG)<br/>
 
+## Object Detection Pipeline
+
+

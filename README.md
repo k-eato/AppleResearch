@@ -18,5 +18,5 @@ The three datsets used with the classification model are split for the purposes 
 ![Classification Data](https://github.com/k-eato/AppleResearch/blob/master/Classification/Data/augmentation_results.JPG)<br/>
 
 ## Object Detection Pipeline
-
+Once the Dataset has been acquired, the next step is to accumulate all the XML files for the images into a CSV file. This is done by running the script "xml_to_csv.py" for each set of images separately (training and testing). The CSV file resulting from this is then used to create a binary 
 

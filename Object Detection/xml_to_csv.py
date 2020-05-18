@@ -1,3 +1,5 @@
+# Replace PATH_TO_IMAGES and CHANGE_FILENAME with appropriate values
+
 import os
 import glob
 import pandas as pd
@@ -27,8 +29,8 @@ def xml_to_csv(path):
 
 def main():
     image_path = os.path.join(os.getcwd(), 'annotations')
-    xml_df = xml_to_csv("myapplepics/Test2")
-    xml_df.to_csv('apple_labels_Test2.csv', index=None)
+    xml_df = xml_to_csv("PATH_TO_IMAGES")
+    xml_df.to_csv('CHANGE_FILENAME.csv', index=None)
     print('Successfully converted xml to csv.')
 
 

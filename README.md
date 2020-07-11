@@ -19,8 +19,8 @@ The three datsets used with the classification model are split for the purposes 
 
 ## Object Detection Pipeline
 Once the Dataset has been acquired, the next step is to accumulate all the XML files for the images into a CSV file. This is done by running the script "xml_to_csv.py" for each set of images separately (training and testing). The CSV file resulting from this is then used to create a binary record file in a data format the TensorFlow system can understand. In this case, the Pascal format is used in the file "create_pascal_tf_record.py" to make the record file. A pbtxt file is also needed to specify the different classes of objects to detect. These should match the labels given in the XML files. The format of this can be seen in the "labels.pbtxt" file provided in the directory. The last file that is necessary to modify is a config file, which will come from whichever pretrained neural network you choose to use. I used a SSD MobileNetV1 model, which can simply be downloaded from the provided [Model Zoo](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/detection_model_zoo.md). A pretrained model is necessary to perform transfer learning, which is a better approach in this case than training a model from scratch because it limits the dataset size and training time necessary to achieve sufficient performance. After roughly an hour and a half of training the model, il was able to detect amost all of the apples in the test dataset. A couple of the results are shown below.<br/>
-<img src="https://github.com/k-eato/AppleResearch/blob/master/Object%20Detection/Results/result21.PNG" width=400 height=225 align=left>
-<img src="https://github.com/k-eato/AppleResearch/blob/master/Object%20Detection/Results/result22.PNG" width=400 height=225 align=left> 
+<img src="https://github.com/k-eato/AppleResearch/blob/master/Object%20Detection/Results/result21.PNG" width=395 height=225 align=left>
+<img src="https://github.com/k-eato/AppleResearch/blob/master/Object%20Detection/Results/result22.PNG" width=395 height=225 align=left> 
  
  <br/><br/><br/><br/><br/><br/><br/><br/><br/>
 
